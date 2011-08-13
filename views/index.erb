@@ -1,0 +1,27 @@
+<h1><%= @test %></h1>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load('payments', '1.0', {
+  'packages': ['sandbox_config']
+});
+</script>
+  
+
+<script type="text/javascript">
+  purchase = function() {
+    goog.payments.inapp.buy({
+        'jwt' : '<%= @cake_jwt %>',
+        'success' : function() { window.alert('success')},
+        'failure' : function() { window.alert('failure')}
+        });
+  }
+</script>
+
+
+<button class="buy-button"
+  id="runDemoButton" name="runDemoButton" type="button" value="buy"
+  onClick="purchase()">
+  Buy
+</button>
+
